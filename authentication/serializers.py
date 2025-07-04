@@ -74,6 +74,14 @@ class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField()
     new_password = serializers.CharField()
 
+
+# user profile 
+class UserProfileSerializer(serializers.Serializer):
+     class Meta:
+        model = User
+        fields = ['full_name', 'email', 'about', 'profile_image']
+        read_only_fields = ['email']  # Make email read-only for updates
+
     
 
 
