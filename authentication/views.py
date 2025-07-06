@@ -20,8 +20,8 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.decorators import parser_classes
 from rest_framework.parsers import MultiPartParser, FormParser
 
-import firebase_admin
-from firebase_admin import credentials, auth as firebase_auth
+# import firebase_admin
+# from firebase_admin import credentials, auth as firebase_auth
 
 User = get_user_model()
 
