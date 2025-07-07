@@ -4,6 +4,7 @@ services:
     env: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn your_project_name.wsgi:application"
+    startCommand: gunicorn ali-court.wsgi:application --bind 0.0.0.0:$8000
     envVars:
       - key: DATABASE_URL
         fromDatabase:
