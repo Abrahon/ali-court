@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'authentication',
     'payments',
+    'chathub',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,8 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
+# AUTH_USER_MODEL = 'authentication.CustomUser'
+
 # STRIPE_SECRET_KEY = ''
 
 ROOT_URLCONF = 'alicourt.urls'
@@ -82,6 +85,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'alicourt.wsgi.application'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # or your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@example.com'
+EMAIL_HOST_PASSWORD = 'your_email_password_or_app_password'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 
 # Database

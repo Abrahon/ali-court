@@ -77,12 +77,14 @@ def send_otp(request):
             user.otp = otp
             user.otp_created_at = timezone.now()
             user.save()
+
             send_mail(
                 'OTP Verification',
                 f'Your OTP is {otp}',
-                'user121@example.com',
+                'noreply@example.com',
                 [email],
             )
+
             return HttpResponse("OTP sent to email")
         except User.DoesNotExist:
             return HttpResponse("User with this email does not exist", status=404)
@@ -98,6 +100,11 @@ def verify_otp(request):
         try:
             user = User.objects.get(email=email)
             if user.otp == otp and user.otp_created_at and timezone.now() <= user.otp_created_at + timedelta(minutes=5):
+                # ✅ Optional: Clear OTP after successful verification
+                user.otp = None
+                user.otp_created_at = None
+                user.save()
+
                 return HttpResponse("OTP verified")
             return HttpResponse("Invalid or expired OTP")
         except User.DoesNotExist:

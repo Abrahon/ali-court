@@ -48,13 +48,12 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField()
 
 
-
-# otp send 
+# send otp
 class OTPSerializer(serializers.Serializer):
     email = serializers.EmailField()
-    # send_otp = serializers.CharField()
 
-# otp verify 
+# verify otp
+
 class VerifyOTPSerializer(serializers.Serializer):
     email = serializers.EmailField()
     otp = serializers.CharField()
